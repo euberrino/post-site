@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+  <h1>{{name|title}}</h1>
+ 
+{% endblock page_title %}
+
+{% block css_file %}
+
+{% endblock css_file %}
+
+{% block content %}
+<p>{{ text }}</p>
+{% endblock %}
