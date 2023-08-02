@@ -2,14 +2,27 @@
 {% load static %}
 
 {% block page_title %}
-  <h1>{{name|title}}</h1>
+  {{post.title}}
  
 {% endblock page_title %}
 
 {% block css_file %}
-
+<link rel="stylesheet" href="{%static "blog/post.css"%}">
 {% endblock css_file %}
 
 {% block content %}
-<p>{{ text }}</p>
+<section id="summary">
+  <h2>{{post.title|title}}</h2>
+  <article>
+    <img src="{%static "blog/images/"|add:post.image%}" alt="Photo">
+     <address>{{post.author| title}}</address>
+     <div>
+      Last updated on <time> {{post.date}}</time>
+     </div>
+  </article>
+</section>
+<main>
+  <p>{{post.content |linebreaks}}</p>
+</main>
+
 {% endblock %}

@@ -7,9 +7,12 @@
 
 {% block css_file %}
 <link rel="stylesheet" href="{%static "blog/index.css"%}">
+<link rel="stylesheet" href="{%static "blog/posts.css"%}">
+<link rel="stylesheet" href="{%static "blog/post-preview.css"%}">
 {% endblock css_file %}
 
 {% block content %}
+
 <header id="main-navigation">
     <h1><a href="{% url 'index' %}">Euge's Blog</a></h1>
     <nav>
@@ -25,21 +28,7 @@
     </section>
     <section id="latest-posts">
         <h2>My latest thoughts</h2>
-        <ul>
-            {% for post in posts %}
-            <li>
-                <article class="post">
-                    <a href="{% url "post" post %}"> 
-                        <img src="{%static "blog/images/writing-blog.jpg"%}" alt="image-post">
-                        <div class="post__content">
-                            <h3>Mi first post</h3>
-                            <p>This is the first post I ever write in a webpage.</p>
-                        </div>
-                        {{ post|title }}</a>
-                </article>
-                </li>
-          {% endfor %}
-          
+        {% include "blog/includes/post-preview.html" %}
         </ul>
     </section>
     <section id="about">
